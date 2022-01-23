@@ -6,6 +6,8 @@ const session = require('express-session');
 const flash = require('express-flash');
 const expressLayouts = require('express-ejs-layouts');
 const MongoStore = require("connect-mongo");
+const passport = require('passport');
+require('./config/passportStrategy');
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
@@ -32,6 +34,9 @@ app.use(session({
     })
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 app.use('/', require('./routes'));
 
