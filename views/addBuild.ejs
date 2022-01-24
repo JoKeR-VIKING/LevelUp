@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Add</title>
 </head>
 <body>
-$END$
+    <form action="/admin/add" method="post">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="motherboard" placeholder="motherboard">
+        <input type="text" name="cpu" placeholder="cpu">
+        <input type="text" name="gpu" placeholder="gpu">
+        <input type="text" name="ram" placeholder="ram">
+        <input type="text" name="storage" placeholder="storage">
+        <input type="text" name="psu" placeholder="psu">
+        <input type="submit" value="Add">
+    </form>
+
+    <a href="/users/signout">Signout</a>
 </body>
 </html>

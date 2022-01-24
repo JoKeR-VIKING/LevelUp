@@ -63,13 +63,8 @@ module.exports.newUser = function (req, res) {
 };
 
 module.exports.createSession = function (req, res) {
-    if (res.locals.user)
-    {
-        req.session.email = req.body.email;
-        return res.redirect('/');
-    }
-
-    return res.redirect('/users/login');
+    req.session.email = req.body.email;
+    return res.redirect('/');
 };
 
 module.exports.signout = function (req, res) {

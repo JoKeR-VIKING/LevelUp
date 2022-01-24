@@ -5,12 +5,36 @@ const schema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
-        type: Number,
+    motherboard: {
+        type: Array,
         required: true
     },
+    cpu: {
+        type: Array,
+        required: true
+    },
+    gpu: {
+        type: Array,
+        required: true
+    },
+    ram: {
+        type: Array,
+        required: true
+    },
+    storage: {
+        type: Array,
+        required: true
+    },
+    psu: {
+        type: Array,
+        required: true
+    },
+    price: {
+        type: Number,
+    },
     avatar: {
-        type: String
+        data: Buffer,
+        contentType: String
     }
 });
 
