@@ -30,11 +30,10 @@ const schema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: Number,
+        type: Number
     },
     avatar: {
-        data: Buffer,
-        contentType: String
+        type: String
     }
 });
 

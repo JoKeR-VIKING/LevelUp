@@ -1,8 +1,15 @@
-import urllib3
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 import pymongo
+import certifi
 
-urlList = ['https://www.amazon.in/s?k={}&s=price-asc-rank']
+op = webdriver.ChromeOptions()
+op.add_argument('headless')
+op.add_argument('--log-level=1')
+
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=op)
+urlList = ['https://www.amazon.in/s?k={}&ref=nb_sb_noss']
 components = ['motherboard', 'cpu', 'gpu', 'ram', 'storage', 'psu']
 
 def getPrice(productName):
@@ -13,11 +20,10 @@ def getPrice(productName):
     url = url.format(productName)
     price = "0"
 
-    http = urllib3.PoolManager()
-    response = http.request('GET', url)
-    soup = BeautifulSoup(response.data, 'html.parser')
+    driver.get(url)
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
 
-    search_result = soup.find_all('div', attrs = {'data-component-type': 's-search-result'})
+    search_result = soup.find_all('div', {'data-component-type': 's-search-result'})
 
     for result in search_result:
         try:
@@ -34,7 +40,7 @@ def getPrice(productName):
     return [productName, price, number_price, url]
 
 def getComponents():
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient("mongodb+srv://prathamvasani1:MM0g75MvxuNIr2T1@cluster0.ckr5c.mongodb.net/levelup?retryWrites=true&w=majority", tlsCAFile=certifi.where())
     db = client["levelup"]
     col = db["builds"]
 

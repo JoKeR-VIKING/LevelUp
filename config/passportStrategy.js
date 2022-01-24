@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 passport.use(new LocalStrategy({
     usernameField: 'email'
 }, function (email, password, done) {
-    User.findOne({ email: email}, function (err, user) {
+    User.find({ email: email }, function (err, user) {
         if (err)
         {
             console.log("Error finding users");
@@ -17,7 +17,7 @@ passport.use(new LocalStrategy({
             return done(null, false);
         }
 
-        const result = bcrypt.compare(password, user.password);
+        const result = bcrypt.compare(password, password);
         if (!result)
         {
             return done(null, false);
@@ -42,7 +42,7 @@ passport.setAuthenticatedUser = function (req, res, next) {
 };
 
 passport.serializeUser(function (user, done) {
-    return done(null, user.id);
+    return done(null, user[0].id);
 });
 
 passport.deserializeUser(function (id, done) {

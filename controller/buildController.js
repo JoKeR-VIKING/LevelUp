@@ -8,10 +8,16 @@ module.exports.displayAll = function (req, res) {
             return res.redirect('back');
         }
 
-        return res.render('builds', {
+        builds.sort(function (obj1, obj2) {
+            return obj1.price - obj2.price;
+        });
+
+        return res.render('allBuilds', {
             title: "Build Display",
             builds: builds,
-            layout: "buildDisplayLayout"
+            i: 0,
+            email: req.session.email ? req.session.email : undefined,
+            layout: "allBuilds"
         });
     });
 };
