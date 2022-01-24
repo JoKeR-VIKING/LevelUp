@@ -4,9 +4,10 @@ const User = require('../models/users');
 const bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy({
-    usernameField: 'email'
-}, function (email, password, done) {
-    User.find({ email: email }, function (err, user) {
+    usernameField: 'email',
+    passReqToCallback: true
+}, function (req, email, password, done) {
+    User.find({ email: email }, async function (err, user) {
         if (err)
         {
             console.log("Error finding users");
@@ -14,12 +15,14 @@ passport.use(new LocalStrategy({
         }
         if (user.length === 0)
         {
+            req.flash('noUser', 'No such user exists');
             return done(null, false);
         }
 
-        const result = bcrypt.compare(password, password);
+        const result = await bcrypt.compare(password, user[0].password);
         if (!result)
         {
+            req.flash('incorrectPass', 'Password Incorrect');
             return done(null, false);
         }
 

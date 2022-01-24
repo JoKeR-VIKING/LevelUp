@@ -11,6 +11,10 @@
             <input type="password" placeholder="Password" class="txtb" name="password" id="password">
             <input type="password" placeholder="Confirm Password" class="txtb" name="confirmPassword" id="password">
             <input type="submit" value="Create Account" class="signup-btn">
+
+            <% if (messages.noMatch) { %>
+                <p class="error-message">*<%= messages.noMatch %></p>
+            <% } %>
         </form>
     </div>
 

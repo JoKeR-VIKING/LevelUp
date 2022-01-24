@@ -1,3 +1,8 @@
+*
+{
+    font-family: "Open Sans", sans-serif;
+}
+
 .signup-form
 {
     width: 500px;
@@ -14,7 +19,6 @@
 .signup-form h1
 {
     margin-top: 10px;
-    font-family: 'Permanent Marker', cursive;
     color: #fff;
     font-size: 40px;
 }
@@ -29,7 +33,6 @@
     box-sizing: border-box;
     outline: none;
     border: none;
-    font-family: "montserrat", sans-serif;
 }
 
 .txtb
@@ -59,9 +62,14 @@
 {
     text-decoration: none;
     color: #fff;
-    font-family: "montserrat", sans-serif;
     font-size: 14px;
     padding: 10px;
     transition: 0.8s;
     display: block;
+}
+
+.error-message
+{
+    font-size: 1rem;
+    color: red;
 }

@@ -69,5 +69,6 @@ module.exports.createSession = function (req, res) {
 
 module.exports.signout = function (req, res) {
     req.logout();
+    req.session.email = undefined;
     return res.redirect('/users/login');
 };

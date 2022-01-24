@@ -25,8 +25,8 @@
             <div class="card">
                 <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
                 <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i++].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn">View More</button>
+                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
+                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
             </div>
             <% printed = true; %>
             <% } %>
@@ -48,8 +48,8 @@
             <div class="card">
                 <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
                 <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i++].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn">View More</button>
+                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
+                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
             </div>
             <% printed = false; %>
             <% } %>
@@ -71,8 +71,8 @@
             <div class="card">
                 <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
                 <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i++].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn">View More</button>
+                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
+                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
             </div>
             <% printed = true %>
             <% } %>

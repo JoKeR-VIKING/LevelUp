@@ -7,6 +7,16 @@
         <input type="text" placeholder="Username" name="email" id="email">
         <input type="password" placeholder="Password" name="password" id="password">
         <input type="submit" value="Login">
+
+        <% if (messages.alreadyExists) { %>
+            <p class="error-message">*<%= messages.alreadyExists %></p>
+        <% } else if (messages.successUser) { %>
+            <p class="success-message">*<%= messages.successUser %></p>
+        <% } else if (messages.noUser) { %>
+            <p class="error-message">*<%= messages.noUser %></p>
+        <% } else if (messages.incorrectPass) { %>
+            <p class="error-message">*<%= messages.incorrectPass %></p>
+        <% } %>
     </form>
 
     <script src=""></script>
