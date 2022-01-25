@@ -26,6 +26,7 @@ passport.use(new LocalStrategy({
             return done(null, false);
         }
 
+        req.session.name = user[0].name;
         return done(null, user);
     });
 }));

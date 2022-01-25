@@ -56,7 +56,7 @@ module.exports.newUser = function (req, res) {
                 return res.redirect('back');
             }
 
-            req.flash('successUser', 'User successfully created')
+            req.flash('successUser', 'User successfully created');
             return res.redirect('/users/login');
         });
     });
@@ -64,7 +64,6 @@ module.exports.newUser = function (req, res) {
 
 module.exports.createSession = function (req, res) {
     req.session.email = req.body.email;
-    req.session.name = req.body.name;
     return res.redirect('/');
 };
 
