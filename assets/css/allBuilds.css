@@ -19,7 +19,7 @@
 .all-cards
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     color: #FFF;
@@ -29,6 +29,9 @@
 .card
 {
     width: 20%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 2.5%;
     height: 350px;
     display: flex;
     flex-direction: column;
