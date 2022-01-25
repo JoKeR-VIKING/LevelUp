@@ -83,16 +83,20 @@ module.exports.display = function (req, res) {
         }
 
         async.forEachOf(builds, function (build, key, callback) {
-            Builds.find({ name: build.name }, function (err, detailBuild) {
-                if (err)
+            if (build.wishlistedUsers.includes(req.session.email))
+            {
+                Builds.find({name: build.name}, function (err, detailBuild)
                 {
-                    console.log("Cannot fetch detail from wishlisted builds");
-                    return res.redirect('back');
-                }
+                    if (err)
+                    {
+                        console.log("Cannot fetch detail from wishlisted builds");
+                        return res.redirect('back');
+                    }
 
-                userBuilds.push(detailBuild[0]);
-                callback();
-            });
+                    userBuilds.push(detailBuild[0]);
+                    callback();
+                });
+            }
         }, function (err) {
             if (err)
             {
