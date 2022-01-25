@@ -1,4 +1,6 @@
 const Wishlist = require('../models/wishlist');
+const Builds = require('../models/build');
+const async = require('async');
 
 module.exports.add = function (req, res) {
     let buildName = req.query.number;
@@ -69,3 +71,63 @@ module.exports.remove = function (req, res) {
         }
     });
 };
+
+module.exports.display = function (req, res) {
+    let userBuilds = [];
+
+    Wishlist.find({}, function (err, builds) {
+        if (err)
+        {
+            console.log("Cannot fetch wishlisted builds");
+            return res.redirect('back');
+        }
+
+        async.forEachOf(builds, function (build, key, callback) {
+            Builds.find({ name: build.name }, function (err, detailBuild) {
+                if (err)
+                {
+                    console.log("Cannot fetch detail from wishlisted builds");
+                    return res.redirect('back');
+                }
+
+                userBuilds.push(detailBuild[0]);
+                callback();
+            });
+        }, function (err) {
+            if (err)
+            {
+                console.log("Error in rendering page");
+                return res.redirect('back');
+            }
+
+            return res.render('wishlist', {
+                title: "Wishlist",
+                email: req.session.email ? req.session.email : undefined,
+                builds: userBuilds,
+                layout: false
+            });
+        });
+    });
+};
+
+// function (err, builds) {
+//         if (err)
+//         {
+//             console.log("Cannot fetch wishlisted builds");
+//             return res.redirect('back');
+//         }
+//
+//         let userBuilds = [];
+//
+//         for (let build of builds)
+//         {
+//             if (build.wishlistedUsers.includes(req.session.email))
+//                 userBuilds.push(build);
+//         }
+//
+//         return res.render('wishlist', {
+//             title: "Wishlist",
+//             email: req.session.email ? req.session.email : undefined,
+//             builds: userBuilds,
+//             layout: false
+//         });
