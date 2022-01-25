@@ -25,7 +25,7 @@
                 <h4 class="name"><%= build.name %></h4>
                 <button class="wishlist-icon">
                     <% if (wishlisted) { %>
-                        <i class="fas fa-heart" style="color: deeppink" onclick="location.href = '/builds/wishlist/remove?number=<%= build.name %>'"></i>
+                        <i class="fas fa-heart" style="color: red" onclick="location.href = '/builds/wishlist/remove?number=<%= build.name %>'"></i>
                     <% } else { %>
                         <i class="fas fa-heart" onclick="location.href = '/builds/wishlist/add?number=<%= build.name %>'"></i>
                     <% } %>
