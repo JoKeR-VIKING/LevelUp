@@ -102,7 +102,7 @@ module.exports.display = function (req, res) {
             }
 
             return res.render('wishlist', {
-                title: "Wishlist | " + req.session.name,
+                title: "Wishlist | " + req.session.name.split(' ')[0],
                 email: req.session.email ? req.session.email : undefined,
                 builds: userBuilds,
                 layout: false
