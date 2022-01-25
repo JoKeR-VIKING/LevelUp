@@ -21,7 +21,16 @@
         </div>
 
         <div class="display-specs">
-            <h4 class="name"><%= build.name %></h4>
+            <div class="name-div">
+                <h4 class="name"><%= build.name %></h4>
+                <button class="wishlist-icon">
+                    <% if (wishlisted) { %>
+                        <i class="fas fa-heart" style="color: deeppink" onclick="location.href = '/builds/wishlist/remove?number=<%= build.name %>'"></i>
+                    <% } else { %>
+                        <i class="fas fa-heart" onclick="location.href = '/builds/wishlist/add?number=<%= build.name %>'"></i>
+                    <% } %>
+                </button>
+            </div>
 
             <a class="link" href="<%= build.motherboard[3] %>" target="_blank">
                 Motherboard: <p class="detail-link"><%= build.motherboard[0] %></p>

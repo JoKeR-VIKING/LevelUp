@@ -13,7 +13,7 @@
 <body>
     <%- include('navbar'); %>
 
-    <% let printed; %>
+    <% let printed = false; %>
 
     <div class="range">
         <h3 class="range-heading">
@@ -38,6 +38,8 @@
         <% } %>
     </div>
 
+    <% printed = false; %>
+
     <div class="range">
         <h3 class="range-heading">
             ₹50,000 - ₹80,000
@@ -51,15 +53,17 @@
                 <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
                 <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
             </div>
-            <% printed = false; %>
+            <% printed = true; %>
             <% } %>
         </div>
 
-        <% if (printed) { %>
+        <% if (!printed) { %>
             <h5 class="title">No Build available</h5>
             <img class="nothing-here" src="/static/img/nothing_here.png" alt="Image Not Found!">
         <% } %>
     </div>
+
+    <% printed = false; %>
 
     <div class="range">
         <h3 class="range-heading">

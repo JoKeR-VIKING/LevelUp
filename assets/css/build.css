@@ -46,10 +46,27 @@ body
     word-spacing: 3px;
 }
 
+.name-div
+{
+    display: flex;
+}
+
 .name
 {
     color: #FFF;
     font-size: 2rem;
+}
+
+.wishlist-icon, .wishlist-icon:focus
+{
+    width: 30px;
+    height: 30px;
+    color: #FFF;
+    border: none;
+    outline: none;
+    margin-top: 1%;
+    margin-left: 5%;
+    background-color: transparent;
 }
 
 .detail-link
