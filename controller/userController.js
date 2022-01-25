@@ -64,11 +64,13 @@ module.exports.newUser = function (req, res) {
 
 module.exports.createSession = function (req, res) {
     req.session.email = req.body.email;
+    req.session.name = req.body.name;
     return res.redirect('/');
 };
 
 module.exports.signout = function (req, res) {
     req.logout();
     req.session.email = undefined;
+    req.session.name = undefined;
     return res.redirect('/users/login');
 };

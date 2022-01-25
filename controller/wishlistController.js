@@ -102,7 +102,7 @@ module.exports.display = function (req, res) {
             }
 
             return res.render('wishlist', {
-                title: "Wishlist",
+                title: "Wishlist | " + req.session.name,
                 email: req.session.email ? req.session.email : undefined,
                 builds: userBuilds,
                 layout: false
@@ -110,25 +110,3 @@ module.exports.display = function (req, res) {
         });
     });
 };
-
-// function (err, builds) {
-//         if (err)
-//         {
-//             console.log("Cannot fetch wishlisted builds");
-//             return res.redirect('back');
-//         }
-//
-//         let userBuilds = [];
-//
-//         for (let build of builds)
-//         {
-//             if (build.wishlistedUsers.includes(req.session.email))
-//                 userBuilds.push(build);
-//         }
-//
-//         return res.render('wishlist', {
-//             title: "Wishlist",
-//             email: req.session.email ? req.session.email : undefined,
-//             builds: userBuilds,
-//             layout: false
-//         });
