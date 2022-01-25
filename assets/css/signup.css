@@ -1,6 +1,8 @@
 *
 {
     font-family: "Open Sans", sans-serif;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .signup-form

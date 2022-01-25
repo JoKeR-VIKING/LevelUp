@@ -1,3 +1,9 @@
+*
+{
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 .main__container
 {
     display: grid;
