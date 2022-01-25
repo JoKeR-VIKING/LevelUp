@@ -7,6 +7,9 @@
         <input type="text" placeholder="Username" name="email" id="email">
         <input type="password" placeholder="Password" name="password" id="password">
         <input type="submit" value="Login">
+        <a class="forgot-link" href="/users/forgot">
+            Forgot Password ?
+        </a>
 
         <% if (messages.alreadyExists) { %>
             <p class="error-message">*<%= messages.alreadyExists %></p>

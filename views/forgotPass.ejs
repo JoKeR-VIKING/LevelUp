@@ -1,0 +1,19 @@
+    <link rel="stylesheet" href="/static/css/forgotPass.css">
+
+    <form class="otp-form" action="<%= verify ? "/users/match" : "/users/sendMail" %>" method="post">
+        <h4 class="title">Forgot Password</h4>
+
+        <% if (verify) { %>
+            <input class="otp-field" type="text" name="otp" placeholder="OTP" required>
+            <input class="submit-btn" type="submit" value="Submit">
+        <% } else { %>
+            <input class="email-field" type="email" name="email" placeholder="Email" required>
+            <input class="submit-btn" type="submit" value="Send OTP">
+        <% } %>
+
+        <% if (messages.wrongOtp) { %>
+            <p class="error-message">*<%= messages.wrongOtp %></p>
+        <% } %>
+    </form>
+
+    <script src=""></script>

@@ -13,4 +13,10 @@ router.post('/oldUser', passport.authenticate('local', {
 
 router.get('/signout', userController.signout);
 
+router.get('/forgot', userController.forgot);
+
+router.post('/sendMail', userController.sendEmail);
+router.post('/match', userController.match);
+router.post('/change', userController.change);
+
 module.exports = router;

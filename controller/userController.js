@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 require('../config/userConnection');
 const Users = require('../models/users');
+const nodemailer = require('nodemailer');
 
 module.exports.login = function (req, res) {
     if (req.isAuthenticated())
@@ -72,4 +73,110 @@ module.exports.signout = function (req, res) {
     req.session.email = undefined;
     req.session.name = undefined;
     return res.redirect('/users/login');
+};
+
+module.exports.forgot = function (req, res) {
+    if (req.session.email)
+        return res.redirect('back');
+
+    return res.render('forgotPass', {
+        title: "Level Up",
+        email: undefined,
+        verify: false,
+        layout: "forgotPassLayout"
+    });
+};
+
+module.exports.sendEmail = async function (req, res) {
+    if (req.session.email)
+        return res.redirect('back');
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: "levelupmailsys@gmail.com",
+            pass: "levelup@123"
+        }
+    });
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const hashedOtp = await bcrypt.hash(otp, 10);
+
+    const mailOptions = {
+        from: 'levelupmailsys@gmail.com',
+        to: req.body.email,
+        subject: 'Change Password',
+        text: otp
+    };
+
+    transporter.sendMail(mailOptions, function (err, info) {
+        if (err)
+        {
+            console.log("Mail cannot be sent" + err);
+            return res.redirect('back');
+        }
+
+        req.session.otp = hashedOtp;
+        req.session.matchEmail = req.body.email;
+
+        return res.render('forgotPass', {
+            title: "Level Up",
+            email: undefined,
+            verify: true,
+            layout: "forgotPassLayout"
+        });
+    });
+};
+
+module.exports.match = async function (req, res) {
+    if (req.session.email || !req.session.otp)
+        return res.redirect('back');
+
+    const result = await bcrypt.compare(req.body.otp, req.session.otp);
+    req.session.otp = undefined;
+
+    if (result)
+    {
+        return res.render('changePass', {
+            title: "Level Up",
+            email: undefined,
+            layout: "forgotPassLayout"
+        });
+    }
+    else
+    {
+        req.flash('wrongOtp', 'Incorrect OTP');
+
+        return res.render('forgotPass', {
+            title: "Level Up",
+            email: undefined,
+            verify: false,
+            layout: "forgotPassLayout"
+        });
+    }
+};
+
+module.exports.change = async function (req, res) {
+    if (req.session.email)
+        return res.redirect('back');
+    if (req.body.password !== req.body.confirmPassword)
+        return res.redirect('back');
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    Users.findOneAndUpdate({ email: req.session.matchEmail }, { $set: {
+        password: hashedPassword
+    }}, {
+        new: true
+    }, function (err, user) {
+        req.session.matchEmail = undefined;
+
+        if (err)
+        {
+            console.log("Password cannot be changed");
+            return res.redirect('back');
+        }
+
+        return res.redirect('/users/login');
+    });
 };

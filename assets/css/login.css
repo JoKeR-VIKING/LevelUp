@@ -74,3 +74,9 @@
     font-size: 1rem;
     color: limegreen;
 }
+
+.forgot-link, .forgot-link:hover, .forgot-link:focus, .forgot-link:active
+{
+    text-decoration: underline;
+    color: #FFF;
+}
