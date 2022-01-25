@@ -94,8 +94,8 @@ module.exports.sendEmail = async function (req, res) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: "levelupmailsys@gmail.com",
-            pass: "levelup@123"
+            user: process.env.CLIENT_MAIL,
+            pass: process.env.CLIENT_PASS
         }
     });
 
@@ -103,7 +103,7 @@ module.exports.sendEmail = async function (req, res) {
     const hashedOtp = await bcrypt.hash(otp, 10);
 
     const mailOptions = {
-        from: 'levelupmailsys@gmail.com',
+        from: process.env.CLIENT_MAIL,
         to: req.body.email,
         subject: 'Change Password',
         text: otp
