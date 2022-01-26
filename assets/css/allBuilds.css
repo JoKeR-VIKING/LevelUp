@@ -85,3 +85,20 @@
     margin-top: -5%;
     margin-bottom: -5%;
 }
+
+.animated
+{
+    animation: 1.5s fadeInPlace ease-in-out;
+}
+
+@keyframes fadeInPlace
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}

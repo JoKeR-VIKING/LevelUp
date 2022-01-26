@@ -11,6 +11,7 @@
 body
 {
     height: 100vh;
+    overflow-x: hidden;
 }
 
 .main-container
@@ -28,6 +29,7 @@ body
     width: 45%;
     height: 100%;
     margin-left: 15%;
+    animation: 1.5s fadeInRight ease-in-out;
 }
 
 .display-specs
@@ -37,6 +39,7 @@ body
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation: 1.5s fadeInLeft ease-in-out;
 }
 
 .link, .link:focus, .link:active, .link:hover, .name
@@ -107,4 +110,32 @@ body
 {
     color: red;
     font-size: 0.8rem;
+}
+
+@keyframes fadeInRight
+{
+    from
+    {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft
+{
+    from
+    {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

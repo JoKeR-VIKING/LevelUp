@@ -1,5 +1,5 @@
 const userConnection = require('mongoose');
-userConnection.connect(process.env.MONGO_URI || "mongodb://localhost:27017");
+userConnection.connect(process.env.MONGO_URI || "mongodb://localhost:27017/levelup");
 
 const db = userConnection.connection;
 db.on('error', console.error.bind(console, "Cannot connect to database"));
