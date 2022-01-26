@@ -1,14 +1,18 @@
+import time
+
 from bs4 import BeautifulSoup
+import os
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
 import pymongo
 import certifi
 
 op = webdriver.ChromeOptions()
-op.add_argument('headless')
+op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+op.add_argument('--headless')
 op.add_argument('--log-level=1')
+op.add_argument('--no-sandbox')
 
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=op)
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op)
 urlList = ['https://www.amazon.in/s?k={}&ref=nb_sb_noss']
 components = ['motherboard', 'cpu', 'gpu', 'ram', 'storage', 'psu']
 
@@ -68,8 +72,13 @@ def getComponents():
             total_price += details[2]
 
             col.update_one(({'_id': buildId}), {'$set': {
-                'price': total_price
+                'price': total_price,
             }})
 
+        print("Build update complete")
+
 if __name__ == '__main__':
-    getComponents()
+    while True:
+        getComponents()
+        print("Sleeping for one day...")
+        time.sleep(86400)

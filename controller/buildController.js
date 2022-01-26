@@ -52,7 +52,7 @@ module.exports.displayAll = function (req, res) {
         });
 
         return res.render('allBuilds', {
-            title: "Build Display",
+            title: "Level Up | Build Display",
             builds: builds,
             i: 0,
             email: req.session.email ? req.session.email : undefined,

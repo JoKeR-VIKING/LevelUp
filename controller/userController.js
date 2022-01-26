@@ -10,7 +10,7 @@ module.exports.login = function (req, res) {
     }
 
     return res.render('login', {
-        title: "Login",
+        title: "Level Up | Login",
         email: undefined,
     });
 };
@@ -22,7 +22,7 @@ module.exports.signup = function (req, res) {
     }
 
     return res.render('signup', {
-        title: "Sign Up",
+        title: "Level Up | Sign Up",
         email: undefined,
     });
 };
@@ -80,7 +80,7 @@ module.exports.forgot = function (req, res) {
         return res.redirect('back');
 
     return res.render('forgotPass', {
-        title: "Level Up",
+        title: "Level Up | Forgot Password",
         email: undefined,
         verify: false,
         layout: "forgotPassLayout"
@@ -120,7 +120,7 @@ module.exports.sendEmail = async function (req, res) {
         req.session.matchEmail = req.body.email;
 
         return res.render('forgotPass', {
-            title: "Level Up",
+            title: "Level Up | Forgot Password",
             email: undefined,
             verify: true,
             layout: "forgotPassLayout"
@@ -138,7 +138,7 @@ module.exports.match = async function (req, res) {
     if (result)
     {
         return res.render('changePass', {
-            title: "Level Up",
+            title: "Level Up | Change Password",
             email: undefined,
             layout: "forgotPassLayout"
         });
@@ -148,7 +148,7 @@ module.exports.match = async function (req, res) {
         req.flash('wrongOtp', 'Incorrect OTP');
 
         return res.render('forgotPass', {
-            title: "Level Up",
+            title: "Level Up | Forgot Password",
             email: undefined,
             verify: false,
             layout: "forgotPassLayout"
