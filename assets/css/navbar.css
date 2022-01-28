@@ -15,7 +15,6 @@ body
 .navbar-custom
 {
     font-size: 1rem;
-    animation: fadeIn 1s ease-in both;
 }
 
 .nav-link, .nav-link:active, .nav-link:focus, .nav-link:hover, .navbar-brand, .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus

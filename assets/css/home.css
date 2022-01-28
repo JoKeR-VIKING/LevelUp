@@ -293,3 +293,20 @@
         width: 300px;
     }
 }
+
+.animated
+{
+    animation: 1s fadeIn ease-in-out;
+}
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
