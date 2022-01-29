@@ -25,7 +25,7 @@ app.use(session({
         maxAge: (1000 * 24 * 60 * 60)
     },
     store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017",
+        mongoUrl: process.env.MONGO_URI || "mongodb://localhost:27017/levelup",
         autoRemove: 'interval',
         autoRemoveInterval: 60
     }, function (err) {
