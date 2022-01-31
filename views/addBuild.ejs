@@ -16,13 +16,13 @@
         <input type="text" name="ram" placeholder="ram">
         <input type="text" name="storage" placeholder="storage">
         <input type="text" name="psu" placeholder="psu">
-        <input type="submit" value="Add">
+        <input type="submit" value="Add" formaction="/admin/add">
     </form>
 
     <form action= "/admin/compatible" method="post">
         <input type="text" name="motherboard" placeholder="motherboard">
         <input type="text" name="cpu" placeholder="cpu">
-        <input type="submit" value="Add">
+        <input type="submit" value="Add" formaction="/admin/compatible">
     </form>
 
     <a href="/users/signout">Signout</a>
