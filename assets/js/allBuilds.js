@@ -21,5 +21,8 @@ for (let card of cards)
 function filterOption()
 {
     let filter = document.getElementsByClassName("filter-menu")[0].value;
+    if (filter === "")
+        filter = "All";
+
     location.href = `/builds/filter?filter=${filter}`;
 }

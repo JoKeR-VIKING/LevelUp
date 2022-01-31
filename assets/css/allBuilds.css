@@ -26,15 +26,6 @@ body
     margin-top: 5%;
 }
 
-.filter-form
-{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .filter-menu
 {
     width: 40%;
@@ -43,6 +34,7 @@ body
     border-radius: 10px;
     color: #FFF;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .filter-menu:active, .filter-menu:focus, .submit-btn:active, .submit-btn:focus
@@ -57,6 +49,8 @@ body
     border-radius: 10px;
     background-color: #FB8122;
     color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .range
