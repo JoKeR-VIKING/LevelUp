@@ -15,73 +15,32 @@
 <body>
     <%- include('navbar'); %>
 
-    <% let printed = false; %>
+    <%- include('filter'); %>
+
+    <%  let printed = false;
+        let i = 0;
+    %>
 
     <div class="range">
         <h3 class="range-heading">
-            ₹20,000 - ₹50,000
+            <%= filter_option %>
         </h3>
 
         <div class="all-cards">
-            <% while (i < builds.length && builds[i].price <= 50000) { %>
-            <div class="card">
-                <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
-                <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
-            </div>
-            <% printed = true; %>
-            <% } %>
-        </div>
-
-        <% if (!printed) { %>
-            <h5 class="title">No Build available</h5>
-            <img class="nothing-here" src="/static/img/nothing_here.png" alt="Image Not Found!">
-        <% } %>
-    </div>
-
-    <% printed = false; %>
-
-    <div class="range">
-        <h3 class="range-heading">
-            ₹50,000 - ₹80,000
-        </h3>
-
-        <div class="all-cards">
-            <% while (i < builds.length && builds[i].price <= 80000) { %>
-            <div class="card">
-                <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
-                <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
-            </div>
-            <% printed = true; %>
-            <% } %>
-        </div>
-
-        <% if (!printed) { %>
-            <h5 class="title">No Build available</h5>
-            <img class="nothing-here" src="/static/img/nothing_here.png" alt="Image Not Found!">
-        <% } %>
-    </div>
-
-    <% printed = false; %>
-
-    <div class="range">
-        <h3 class="range-heading">
-            ₹80,000 - ₹3,00,000
-        </h3>
-
-        <div class="all-cards">
-            <% while (i < builds.length) { %>
-            <div class="card">
-                <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
-                <h5 class="product-title"><%= builds[i].name; %></h5>
-                <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
-                <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i++].name %>'">View More</button>
-            </div>
-            <% printed = true %>
-            <% } %>
+            <%  while (i < builds.length && builds[i].price <= range[1]) {
+                if (builds[i].price >= range[0]) {
+            %>
+                <div class="card">
+                    <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
+                    <h5 class="product-title"><%= builds[i].name; %></h5>
+                    <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
+                    <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i].name %>'">View More</button>
+                </div>
+            <%  printed = true;
+                }
+                i++;
+            }
+            %>
         </div>
 
         <% if (!printed) { %>

@@ -62,12 +62,8 @@ body
     width: 120px;
 }
 
-.navbar-toggler-icon
+.navbar-toggler
 {
     background-color: #FB8122 !important;
-}
-
-.navbar-light
-{
-    background-color: #FFF !important;
+    background-clip: padding-box !important;
 }

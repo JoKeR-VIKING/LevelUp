@@ -8,12 +8,69 @@
     -webkit-user-drag: none;
 }
 
+body
+{
+    height: 100vh;
+}
+
+.filter
+{
+    width: 60%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-top: 5%;
+}
+
+.filter-form
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filter-menu
+{
+    width: 40%;
+    height: 60%;
+    background-color: #FB8122;
+    border-radius: 10px;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.filter-menu:active, .filter-menu:focus, .submit-btn:active, .submit-btn:focus
+{
+    outline: none;
+}
+
+.filter-btn
+{
+    width: 30%;
+    height: 60%;
+    border-radius: 10px;
+    background-color: #FB8122;
+    color: #FFF;
+}
+
 .range
 {
     display: flex;
     flex-direction: column;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-bottom: 7%;
+    color: #FFF;
+    text-align: center;
+}
+
+.range-heading
+{
     color: #FFF;
     text-align: center;
 }
