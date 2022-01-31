@@ -12,6 +12,6 @@ router.get('/', function (req, res) {
     });
 });
 router.post('/add', adminController.addBuild);
-router.post('/compatible', adminController.addBuild);
+router.post('/compatible', adminController.compatible);
 
 module.exports = router;
