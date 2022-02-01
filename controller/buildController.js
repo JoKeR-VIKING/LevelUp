@@ -1,5 +1,7 @@
 const Builds = require('../models/build');
 const Wishlist = require('../models/wishlist');
+const Compatible = require('../models/compatible');
+const Prices = require('../models/prices');
 const async = require('async');
 
 module.exports.displayBuild = function (req, res) {
@@ -152,6 +154,50 @@ module.exports.filter = function (req, res) {
             range: range,
             email: req.session.email ? req.session.email : undefined,
             layout: "allBuilds"
+        });
+    });
+};
+
+module.exports.create = function (req, res) {
+    Compatible.find({}, function (err, motherboards) {
+        if (err)
+        {
+            console.log("Unable to find components");
+            return res.redirect('back');
+        }
+
+        return res.render('create', {
+            title: "Level Up | Create",
+            selected_motherboard: undefined,
+            motherboards: motherboards,
+            cpus: [],
+            email: req.session.email
+        });
+    });
+};
+
+module.exports.change = function (req, res) {
+    Compatible.find({}, function (err, motherboards) {
+        if (err || motherboards.length === 0)
+        {
+            console.log("Cannot fetch motherboard");
+            return res.redirect('back');
+        }
+
+        Compatible.find({ motherboard: req.query.motherboard }, function (err, motherboard) {
+            if (err || motherboards.length === 0)
+            {
+                console.log("Cannot fetch motherboard");
+                return res.redirect('back');
+            }
+
+            return res.render('create', {
+                title: "Level Up | Create",
+                motherboards: motherboards,
+                selected_motherboard: req.query.motherboard,
+                cpus: motherboard[0].cpuList,
+                email: req.session.email
+            });
         });
     });
 };

@@ -1,0 +1,23 @@
+    <link rel="stylesheet" href="/static/css/create.css">
+
+    <div class="dropdown-container">
+        <select class="motherboard" id="motherboard" name="motherboard">
+            <% if (!selected_motherboard) { %>
+                <option value="" selected disabled hidden>Choose Motherboard</option>
+            <% } else { %>
+                <option value="<%= selected_motherboard %>" selected disabled hidden><%= selected_motherboard %></option>
+            <% } %>
+            <% for (let motherboard of motherboards) { %>
+                <option value="<%= motherboard.motherboard %>"><%= motherboard.motherboard %></option>
+            <% } %>
+        </select>
+
+        <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %> style="<%= selected_motherboard ? undefined : "background-color: dimgray;" %>">
+            <option value="" selected disabled hidden>Choose CPU</option>
+            <% for (let cpu of cpus) { %>
+                <option value="<%= cpu %>"><%= cpu %></option>
+            <% } %>
+        </select>
+    </div>
+
+    <script src="/static/js/create.js"></script>
