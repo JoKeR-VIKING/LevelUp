@@ -8,6 +8,7 @@ const expressLayouts = require('express-ejs-layouts');
 const MongoStore = require("connect-mongo");
 const passport = require('passport');
 require('./config/passportStrategy');
+process.env.MONGO_URI = "mongodb+srv://prathamvasani1:MM0g75MvxuNIr2T1@cluster0.ckr5c.mongodb.net/levelup?retryWrites=true&w=majority";
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');

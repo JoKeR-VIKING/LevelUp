@@ -8,12 +8,40 @@
                 <option value="<%= selected_motherboard %>" selected disabled hidden><%= selected_motherboard %></option>
             <% } %>
             <% for (let motherboard of motherboards) { %>
-                <option value="<%= motherboard.motherboard %>"><%= motherboard.motherboard %></option>
+                <option class="option-input" data-tokens="<%= motherboard.motherboard %>" value="<%= motherboard.motherboard %>"><%= motherboard.motherboard %></option>
             <% } %>
         </select>
 
-        <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %> style="<%= selected_motherboard ? undefined : "background-color: dimgray;" %>">
+        <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %>>
             <option value="" selected disabled hidden>Choose CPU</option>
+            <% for (let cpu of cpus) { %>
+                <option value="<%= cpu %>"><%= cpu %></option>
+            <% } %>
+        </select>
+
+        <select class="gpu" name="gpu" <%= selected_motherboard ? undefined : "disabled" %>>
+            <option value="" selected disabled hidden>Choose GPU</option>
+            <% for (let cpu of cpus) { %>
+                <option value="<%= cpu %>"><%= cpu %></option>
+            <% } %>
+        </select>
+
+        <select class="ram" name="ram" <%= selected_motherboard ? undefined : "disabled" %>>
+            <option value="" selected disabled hidden>Choose RAM</option>
+            <% for (let cpu of cpus) { %>
+                <option value="<%= cpu %>"><%= cpu %></option>
+            <% } %>
+        </select>
+
+        <select class="storage" name="storage" <%= selected_motherboard ? undefined : "disabled" %>>
+            <option value="" selected disabled hidden>Choose Storage</option>
+            <% for (let cpu of cpus) { %>
+                <option value="<%= cpu %>"><%= cpu %></option>
+            <% } %>
+        </select>
+
+        <select class="psu" name="psu" <%= selected_motherboard ? undefined : "disabled" %>>
+            <option value="" selected disabled hidden>Choose Power Supply</option>
             <% for (let cpu of cpus) { %>
                 <option value="<%= cpu %>"><%= cpu %></option>
             <% } %>
