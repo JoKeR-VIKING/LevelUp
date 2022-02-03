@@ -6,31 +6,27 @@ $(document).ready(function() {
     $('.storage').select2();
     $('.psu').select2();
 
-    $('.motherboard').on('change', function (e) {
+    $('.motherboard').on('change', function () {
         location.href = `/builds/change?motherboard=${this.value}`;
     });
 
-    // $('.motherboard').select2({
-    //     width: '40%'
-    // });
-    //
-    // $('.cpu').select2({
-    //     width: '40%'
-    // });
-    //
-    // $('.gpu').select2({
-    //     width: '40%'
-    // });
-    //
-    // $('.ram').select2({
-    //     width: '40%'
-    // });
-    //
-    // $('.storage').select2({
-    //     width: '40%'
-    // });
-    //
-    // $('.psu').select2({
-    //     width: '40%'
-    // });
+    window.onload = function () {
+        let allMenus = document.getElementsByClassName("select2-selection");
+        allMenus[0].style.backgroundColor = "#FB8122";
+
+        if (document.getElementsByClassName("select2-selection__rendered")[0].textContent === "Choose Motherboard")
+        {
+            for (let i=1;i<allMenus.length;i++)
+            {
+                allMenus[i].style.backgroundColor = "dimgray";
+            }
+        }
+        else
+        {
+            for (let i=1;i<allMenus.length;i++)
+            {
+                allMenus[i].style.backgroundColor = "#FB8122";
+            }
+        }
+    }
 });
