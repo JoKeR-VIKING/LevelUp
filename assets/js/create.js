@@ -10,28 +10,27 @@ $(document).ready(function() {
         location.href = `/builds/change?motherboard=${this.value}`;
     });
 
-    $('.motherboard').select2({
-        width: '40%',
-        height: '10%'
-    });
-
-    $('.cpu').select2({
-        width: '40%'
-    });
-
-    $('.gpu').select2({
-        width: '40%'
-    });
-
-    $('.ram').select2({
-        width: '40%'
-    });
-
-    $('.storage').select2({
-        width: '40%'
-    });
-
-    $('.psu').select2({
-        width: '40%'
-    });
+    // $('.motherboard').select2({
+    //     width: '40%'
+    // });
+    //
+    // $('.cpu').select2({
+    //     width: '40%'
+    // });
+    //
+    // $('.gpu').select2({
+    //     width: '40%'
+    // });
+    //
+    // $('.ram').select2({
+    //     width: '40%'
+    // });
+    //
+    // $('.storage').select2({
+    //     width: '40%'
+    // });
+    //
+    // $('.psu').select2({
+    //     width: '40%'
+    // });
 });

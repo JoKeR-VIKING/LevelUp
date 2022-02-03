@@ -20,6 +20,7 @@ body
 
 .select2
 {
+    width: 40% !important;
     height: 10% !important;
 }
 
@@ -63,4 +64,21 @@ body
 ::placeholder
 {
     color: #FFF !important;
+}
+
+@media only screen and (max-width: 990px)
+{
+    .dropdown-container
+    {
+        width: 90%;
+        left: 5%;
+    }
+}
+
+@media only screen and (max-width: 700px)
+{
+    .select2
+    {
+        width: 80% !important;
+    }
 }
