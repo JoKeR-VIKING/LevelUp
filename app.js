@@ -8,6 +8,7 @@ const expressLayouts = require('express-ejs-layouts');
 const MongoStore = require("connect-mongo");
 const passport = require('passport');
 require('./config/passportStrategy');
+require('dotenv').config({path: __dirname + '/.env'});
 
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
