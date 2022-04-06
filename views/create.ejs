@@ -21,29 +21,29 @@
 
         <select class="gpu" name="gpu" <%= selected_motherboard ? undefined : "disabled" %>>
             <option value="" selected disabled hidden>Choose GPU</option>
-            <% for (let cpu of cpus) { %>
-                <option value="<%= cpu %>"><%= cpu %></option>
+            <% for (let gpu of gpus) { %>
+                <option value="<%= gpu %>"><%= gpu %></option>
             <% } %>
         </select>
 
         <select class="ram" name="ram" <%= selected_motherboard ? undefined : "disabled" %>>
             <option value="" selected disabled hidden>Choose RAM</option>
-            <% for (let cpu of cpus) { %>
-                <option value="<%= cpu %>"><%= cpu %></option>
+            <% for (let ram of rams) { %>
+                <option value="<%= ram %>"><%= ram %></option>
             <% } %>
         </select>
 
         <select class="storage" name="storage" <%= selected_motherboard ? undefined : "disabled" %>>
             <option value="" selected disabled hidden>Choose Storage</option>
-            <% for (let cpu of cpus) { %>
-                <option value="<%= cpu %>"><%= cpu %></option>
+            <% for (let storage of storages) { %>
+                <option value="<%= storage %>"><%= storage %></option>
             <% } %>
         </select>
 
         <select class="psu" name="psu" <%= selected_motherboard ? undefined : "disabled" %>>
             <option value="" selected disabled hidden>Choose Power Supply</option>
-            <% for (let cpu of cpus) { %>
-                <option value="<%= cpu %>"><%= cpu %></option>
+            <% for (let psu of psus) { %>
+                <option value="<%= psu %>"><%= psu %></option>
             <% } %>
         </select>
     </div>

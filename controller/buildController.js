@@ -171,6 +171,10 @@ module.exports.create = function (req, res) {
             selected_motherboard: undefined,
             motherboards: motherboards,
             cpus: [],
+            gpus: [],
+            rams: [],
+            storages: [],
+            psus: [],
             email: req.session.email
         });
     });
@@ -196,6 +200,10 @@ module.exports.change = function (req, res) {
                 motherboards: motherboards,
                 selected_motherboard: req.query.motherboard,
                 cpus: motherboard[0].cpuList,
+                gpus: motherboard[0].gpuList,
+                rams: motherboard[0].ramList,
+                storages: motherboard[0].storageList,
+                psus: motherboard[0].power_supplyList,
                 email: req.session.email
             });
         });

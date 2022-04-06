@@ -109,7 +109,7 @@ module.exports.sendEmail = async function (req, res) {
         text: otp
     };
 
-    transporter.sendMail(mailOptions, function (err, info) {
+    transporter.sendMail(mailOptions, function (err) {
         if (err)
         {
             console.log("Mail cannot be sent" + err);

@@ -23,7 +23,11 @@
 
     <div class="range">
         <h3 class="range-heading">
-            <%= filter_option %>
+            <% if (filter_option === undefined) { %>
+                    <%= "Most Popular" %>
+            <% } else { %>
+                    <%= filter_option %>
+            <% } %>
         </h3>
 
         <div class="all-cards">
@@ -46,6 +50,10 @@
         <% if (!printed) { %>
             <h5 class="title">No Build available</h5>
             <img class="nothing-here" src="/static/img/nothing_here.png" alt="Image Not Found!">
+        <% } else { %>
+            <div class="page-no">
+
+            </div>
         <% } %>
     </div>
 

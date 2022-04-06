@@ -10,7 +10,7 @@
 
 body
 {
-    height: 100vh;
+    height: 100vh !important;
 }
 
 .filter
@@ -55,6 +55,7 @@ body
 
 .range
 {
+    height: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 5%;
@@ -91,8 +92,10 @@ body
     align-items: center;
     border: 1px solid #FFF !important;
     outline: none;
-    background-color: #1D2228 !important;
+    /*background-color: #1D2228 !important;*/
     border-radius: 20px !important;
+    background: -webkit-linear-gradient(to right, #001119, #3b426e) !important;
+    background: linear-gradient(to right, #001119, #3b426e) !important;
 }
 
 .avatar
@@ -140,6 +143,33 @@ body
 .animated
 {
     animation: 1.5s fadeInPlace ease-in-out;
+}
+
+.page-no
+{
+    width: 15%;
+    height: 10%;
+    margin-top: 3%;
+    margin-left: 42.5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pageCircle
+{
+    width: 7%;
+    height: 25%;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+}
+
+.pageCircle:active, .pageCircle:focus
+{
+    outline: none;
+    border: none;
 }
 
 @keyframes fadeInPlace

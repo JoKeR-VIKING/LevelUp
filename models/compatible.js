@@ -7,6 +7,18 @@ const schema = new mongoose.Schema({
     },
     cpuList: {
         type: Array,
+    },
+    gpuList: {
+        type: Array,
+    },
+    ramList: {
+        type: Array,
+    },
+    storageList: {
+        type: Array,
+    },
+    power_supplyList: {
+        type: Array,
     }
 });
 

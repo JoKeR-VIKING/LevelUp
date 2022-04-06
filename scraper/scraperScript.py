@@ -1,18 +1,15 @@
-import time
-
 from bs4 import BeautifulSoup
-import os
 from selenium import webdriver
 import pymongo
 import certifi
 
 op = webdriver.ChromeOptions()
-op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+# op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 op.add_argument('--headless')
 op.add_argument('--log-level=1')
 op.add_argument('--no-sandbox')
 
-driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op)
+driver = webdriver.Chrome(executable_path="chromedriver.exe", chrome_options=op)
 urlList = ['https://www.amazon.in/s?k={}&ref=nb_sb_noss']
 components = ['motherboard', 'cpu', 'gpu', 'ram', 'storage', 'psu']
 
@@ -80,5 +77,6 @@ def getComponents():
 if __name__ == '__main__':
     while True:
         getComponents()
-        print("Sleeping for one day...")
-        time.sleep(86400)
+        # print("Sleeping for one day...")
+        # time.sleep(86400)
+        break
