@@ -33,16 +33,17 @@ body
     border: none !important;
     outline: none !important;
     border-radius: 10px !important;
-    color: #FFF !important;
+    color:  #EB4B4B!important;
 }
 
 .select2-dropdown
 {
-    background-color: #FB8122 !important;
+    background-color: #EB4B4B;
+ !important;
     border: none !important;
     outline: none !important;
     border-radius: 10px !important;
-    color: #FFF !important;
+    color: #EB4B4B !important;
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.9) !important;
 }
 
@@ -56,45 +57,13 @@ body
 
 .select2-selection__rendered
 {
-    color: #FFF !important;
+    color: #EB4B4B !important;
     font-size: 1.3rem !important;
 }
 
 ::placeholder
 {
-    color: #FFF !important;
-}
-
-.final-price
-{
-    width: 45%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.get-price
-{
-    text-transform: uppercase;
-    color: #FFF;
-    background-color: #FB8122;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    padding: 10px;
-}
-
-.get-price:focus, .get-price:active
-{
-    border: none;
-    outline: none;
-}
-
-.price
-{
-    margin: 0;
-    padding: 0;
-    color: #FFF;
+    color: #EB4B4B!important;
 }
 
 @media only screen and (max-width: 990px)

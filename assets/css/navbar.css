@@ -9,37 +9,45 @@
 
 body
 {
-    background-color: #1D2228;
+    background-color: #CCEAEB;
+
 }
 
 .navbar-custom
 {
     font-size: 1rem;
+    background-color:#cf556c;
+    border-radius: 5px;
+
 }
 
 .nav-link, .nav-link:active, .nav-link:focus, .nav-link:hover, .navbar-brand, .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus
 {
-    color: #FB8122;
+    color: #1D2228;
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0.15em;
+
     display: inline-block;
     padding: 15px 20px;
     position: relative;
+
+
+
 }
 
 .nav-link:after, .navbar-brand:after
 {
-    color: #FB8122;
+    color: #1D2228;
     bottom: 0;
     content: "";
     display: block;
     height: 2px;
     left: 50%;
     position: absolute;
-    background: #FB8122;
+    background: #1D2228;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
+    font-weight:500;
 }
 
 .nav-link:hover:after, .navbar-brand:hover:after
