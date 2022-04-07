@@ -67,7 +67,7 @@ $(document).ready(function() {
 
     window.onload = function () {
         let allMenus = document.getElementsByClassName("select2-selection");
-        allMenus[0].style.backgroundColor = "#FB8122";
+        allMenus[0].style.backgroundColor = "#FFF";
 
         if (document.getElementsByClassName("select2-selection__rendered")[0].textContent === "Choose Motherboard")
         {
@@ -80,7 +80,7 @@ $(document).ready(function() {
         {
             for (let i=1;i<allMenus.length;i++)
             {
-                allMenus[i].style.backgroundColor = "#FB8122";
+                allMenus[i].style.backgroundColor = "#FFF";
             }
         }
     }
