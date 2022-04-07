@@ -44,7 +44,7 @@ body
 
 .link, .link:focus, .link:active, .link:hover, .name
 {
-    color: #FB8122;
+    color: #EB4B4B;
     font-size: 1.3rem;
     margin-bottom: 4%;
     text-decoration: none;
@@ -58,7 +58,7 @@ body
 
 .name
 {
-    color: #FFF;
+    color: #1D2228;
     font-size: 2rem;
 }
 
@@ -81,28 +81,28 @@ body
 
 .detail-link:after
 {
-    color: #FB8122;
+    color: #EB4B4B;
     bottom: 0;
     content: "";
     display: block;
     height: 2px;
     left: 50%;
     position: absolute;
-    background: #FFF;
+    background: #1D2228;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
 
 .detail-link:hover:after
 {
-    color: #FFF;
+    color: #1D2228;
     width: 100%;
     left: 0;
 }
 
 .detail-link
 {
-    color: #FFF;
+    color: #1D2228;
     display: inline;
 }
 
