@@ -6,7 +6,7 @@ const async = require('async');
 
 module.exports.displayBuild = function (req, res) {
     if (!req.query.number)
-        return res.redirect('/builds/all');
+        return res.redirect('/builds/filter?filter=Most Popular');
 
     let buildName = req.query.number;
 
@@ -169,12 +169,18 @@ module.exports.create = function (req, res) {
         return res.render('create', {
             title: "Level Up | Create",
             selected_motherboard: undefined,
+            selected_cpu: undefined,
+            selected_gpu: undefined,
+            selected_ram: undefined,
+            selected_storage: undefined,
+            selected_psu: undefined,
             motherboards: motherboards,
             cpus: [],
             gpus: [],
             rams: [],
             storages: [],
             psus: [],
+            total_price: 0,
             email: req.session.email
         });
     });
@@ -188,22 +194,79 @@ module.exports.change = function (req, res) {
             return res.redirect('back');
         }
 
-        Compatible.find({ motherboard: req.query.motherboard }, function (err, motherboard) {
+        Compatible.find({ motherboard: req.query.motherboard }, async function (err, motherboard) {
             if (err || motherboards.length === 0)
             {
                 console.log("Cannot fetch motherboard");
                 return res.redirect('back');
             }
 
+            let total_price = 0;
+            let selected_motherboard = req.query.motherboard,
+                selected_cpu = req.query.cpu,
+                selected_gpu = req.query.gpu,
+                selected_ram = req.query.ram,
+                selected_storage = req.query.storage,
+                selected_psu = req.query.psu;
+
+            if (selected_motherboard)
+            {
+                const prices = await Prices.find({ name: selected_motherboard.toString().toLowerCase() });
+                total_price += prices[0].price[2];
+            }
+
+            if (selected_cpu)
+            {
+                const prices = await Prices.find({ name: selected_cpu.toString().toLowerCase() });
+                total_price += prices[0].price[2];
+            }
+
+            if (selected_gpu)
+            {
+                const prices = await Prices.find({ name: selected_gpu.toString().toLowerCase() });
+                total_price += prices[0].price[2];
+            }
+
+            if (selected_ram)
+            {
+                const prices = await Prices.find({ name: selected_ram.toString().toLowerCase() });
+                total_price += prices[0].price[2];
+            }
+
+            if (selected_storage)
+            {
+                const prices = await Prices.find({ name: selected_storage.toString().toLowerCase() });
+                total_price += prices[0].price[2];
+            }
+
+            if (selected_psu)
+            {
+                const prices = await Prices.find({ name: selected_psu.toString().toLowerCase() });
+
+                if (prices.length === 0)
+                {
+                    const new_prices = await Prices.find({ name: selected_psu.toString().toLowerCase().slice(0, -1) + '+' });
+                    total_price += new_prices[0].price[2];
+                }
+                else
+                    total_price += prices[0].price[2];
+            }
+
             return res.render('create', {
                 title: "Level Up | Create",
                 motherboards: motherboards,
-                selected_motherboard: req.query.motherboard,
+                selected_motherboard: selected_motherboard,
+                selected_cpu: selected_cpu,
+                selected_gpu: selected_gpu,
+                selected_ram: selected_ram,
+                selected_storage: selected_storage,
+                selected_psu: selected_psu,
                 cpus: motherboard[0].cpuList,
                 gpus: motherboard[0].gpuList,
                 rams: motherboard[0].ramList,
                 storages: motherboard[0].storageList,
                 psus: motherboard[0].power_supplyList,
+                total_price: total_price,
                 email: req.session.email
             });
         });

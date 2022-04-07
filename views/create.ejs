@@ -13,39 +13,65 @@
         </select>
 
         <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <option value="" selected disabled hidden>Choose CPU</option>
+            <% if (!selected_cpu) { %>
+                <option value="" selected disabled hidden>Choose CPU</option>
+            <% } else { %>
+                <option value="<%= selected_cpu %>" selected disabled hidden><%= selected_cpu %></option>
+            <% } %>
             <% for (let cpu of cpus) { %>
                 <option value="<%= cpu %>"><%= cpu %></option>
             <% } %>
         </select>
 
         <select class="gpu" name="gpu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <option value="" selected disabled hidden>Choose GPU</option>
+            <% if (!selected_gpu) { %>
+                <option value="" selected disabled hidden>Choose GPU</option>
+            <% } else { %>
+                <option value="<%= selected_gpu %>" selected disabled hidden><%= selected_gpu %></option>
+            <% } %>
             <% for (let gpu of gpus) { %>
                 <option value="<%= gpu %>"><%= gpu %></option>
             <% } %>
         </select>
 
         <select class="ram" name="ram" <%= selected_motherboard ? undefined : "disabled" %>>
-            <option value="" selected disabled hidden>Choose RAM</option>
+            <% if (!selected_ram) { %>
+                <option value="" selected disabled hidden>Choose RAM</option>
+            <% } else { %>
+                <option value="<%= selected_ram %>" selected disabled hidden><%= selected_ram %></option>
+            <% } %>
             <% for (let ram of rams) { %>
-                <option value="<%= ram %>"><%= ram %></option>
+                <option value="<%= ram %>"><%= rams %></option>
             <% } %>
         </select>
 
         <select class="storage" name="storage" <%= selected_motherboard ? undefined : "disabled" %>>
-            <option value="" selected disabled hidden>Choose Storage</option>
+             <% if (!selected_storage) { %>
+                <option value="" selected disabled hidden>Choose Storage</option>
+            <% } else { %>
+                <option value="<%= selected_storage %>" selected disabled hidden><%= selected_storage %></option>
+            <% } %>
             <% for (let storage of storages) { %>
                 <option value="<%= storage %>"><%= storage %></option>
             <% } %>
         </select>
 
         <select class="psu" name="psu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <option value="" selected disabled hidden>Choose Power Supply</option>
+            <% if (!selected_psu) { %>
+                <option value="" selected disabled hidden>Choose PSU</option>
+            <% } else { %>
+                <option value="<%= selected_psu %>" selected disabled hidden><%= selected_psu %></option>
+            <% } %>
             <% for (let psu of psus) { %>
                 <option value="<%= psu %>"><%= psu %></option>
             <% } %>
         </select>
+
+        <div class="final-price">
+            <h3 class="price">
+                Total Price = ₹ <%= total_price.toLocaleString() %>
+            </h3>
+        </div>
     </div>
 
     <script src="/static/js/create.js"></script>

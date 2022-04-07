@@ -65,6 +65,38 @@ body
     color: #FFF !important;
 }
 
+.final-price
+{
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.get-price
+{
+    text-transform: uppercase;
+    color: #FFF;
+    background-color: #FB8122;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.get-price:focus, .get-price:active
+{
+    border: none;
+    outline: none;
+}
+
+.price
+{
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+}
+
 @media only screen and (max-width: 990px)
 {
     .dropdown-container
