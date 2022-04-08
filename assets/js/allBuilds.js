@@ -26,7 +26,7 @@ for (let i=0;i<max_page;i+=4)
     pageCircle.id = (i / 4).toString();
 
     if (i === 0)
-        pageCircle.style.backgroundColor = '#FB8122';
+        pageCircle.style.backgroundColor = '#EB4B4B';
 
     pageCircle.addEventListener('click', function () {
         changePage(this.id);
@@ -53,9 +53,9 @@ function changePage(changeTo)
     for (let i=0;i<pageCircle.length;i++)
     {
         if (i === curr_page)
-            pageCircle[i].style.backgroundColor = '#FB8122';
+            pageCircle[i].style.backgroundColor = '#EB4B4B';
         else
-            pageCircle[i].style.backgroundColor = '#FFF';
+            pageCircle[i].style.backgroundColor = '#1D2228';
     }
 
     let index = 0, left = 0, right = curr_page + 1;
@@ -90,7 +90,14 @@ function changePage(changeTo)
     }
 }
 
+function automaticChangePage()
+{
+    changePage(curr_page);
+    curr_page = (curr_page + 1) % (max_page / 4);
+}
+
 window.onload = function ()
 {
     changePage(0);
+    setInterval(automaticChangePage, 5500);
 }
