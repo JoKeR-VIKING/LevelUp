@@ -1,22 +1,29 @@
 let cards = document.getElementsByClassName("card");
 let curr_page = 0, max_page = cards.length;
 
-document.addEventListener('scroll', function () {
-    for (let card of cards)
-    {
-        let coord = card.getBoundingClientRect();
+// document.addEventListener('scroll', function () {
+//     for (let card of cards)
+//     {
+//         let coord = card.getBoundingClientRect();
+//
+//         if (coord.top < window.innerHeight)
+//             card.classList.add('animated');
+//     }
+// });
 
-        if (coord.top < window.innerHeight)
-            card.classList.add('animated');
-    }
-});
-
-for (let card of cards)
+for (let i=0;i<cards.length;i++)
 {
-    let coord = card.getBoundingClientRect();
+    let coord = cards[i].getBoundingClientRect();
 
     if (coord.top < window.innerHeight)
-        card.classList.add('animated');
+    {
+        if (i === 0)
+            cards[i].classList.add('animatedRight');
+        else if (i === cards.length - 1)
+            cards[i].classList.add('animatedLeft');
+        else
+            cards[i].classList.add('animated');
+    }
 }
 
 for (let i=0;i<max_page;i+=4)

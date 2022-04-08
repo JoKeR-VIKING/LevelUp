@@ -139,9 +139,19 @@ body
     margin-bottom: -5%;
 }
 
+.animatedLeft
+{
+    animation: 1s fadeInLeft ease-in-out;
+}
+
 .animated
 {
-    animation: 1.5s fadeInPlace ease-in-out;
+    animation: 1s fadeInPlace ease-in-out;
+}
+
+.animatedRight
+{
+    animation: 1s fadeInRight ease-in-out;
 }
 
 .page-no
@@ -180,5 +190,33 @@ body
     to
     {
         opacity: 1;
+    }
+}
+
+@keyframes fadeInRight
+{
+    from
+    {
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft
+{
+    from
+    {
+        opacity: 0;
+        transform: translateX(300px);
+    }
+    to
+    {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
