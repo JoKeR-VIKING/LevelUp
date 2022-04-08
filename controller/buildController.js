@@ -169,11 +169,6 @@ module.exports.create = function (req, res) {
         return res.render('create', {
             title: "Level Up | Create",
             selected_motherboard: undefined,
-            selected_cpu: undefined,
-            selected_gpu: undefined,
-            selected_ram: undefined,
-            selected_storage: undefined,
-            selected_psu: undefined,
             motherboards: motherboards,
             cpus: [],
             gpus: [],
@@ -202,12 +197,7 @@ module.exports.change = function (req, res) {
             }
 
             let total_price = 0;
-            let selected_motherboard = req.query.motherboard,
-                selected_cpu = req.query.cpu,
-                selected_gpu = req.query.gpu,
-                selected_ram = req.query.ram,
-                selected_storage = req.query.storage,
-                selected_psu = req.query.psu;
+            let selected_motherboard = req.query.motherboard;
 
             if (selected_motherboard)
             {
@@ -215,52 +205,10 @@ module.exports.change = function (req, res) {
                 total_price += prices[0].price[2];
             }
 
-            if (selected_cpu)
-            {
-                const prices = await Prices.find({ name: selected_cpu.toString().toLowerCase() });
-                total_price += prices[0].price[2];
-            }
-
-            if (selected_gpu)
-            {
-                const prices = await Prices.find({ name: selected_gpu.toString().toLowerCase() });
-                total_price += prices[0].price[2];
-            }
-
-            if (selected_ram)
-            {
-                const prices = await Prices.find({ name: selected_ram.toString().toLowerCase() });
-                total_price += prices[0].price[2];
-            }
-
-            if (selected_storage)
-            {
-                const prices = await Prices.find({ name: selected_storage.toString().toLowerCase() });
-                total_price += prices[0].price[2];
-            }
-
-            if (selected_psu)
-            {
-                const prices = await Prices.find({ name: selected_psu.toString().toLowerCase() });
-
-                if (prices.length === 0)
-                {
-                    const new_prices = await Prices.find({ name: selected_psu.toString().toLowerCase().slice(0, -1) + '+' });
-                    total_price += new_prices[0].price[2];
-                }
-                else
-                    total_price += prices[0].price[2];
-            }
-
             return res.render('create', {
                 title: "Level Up | Create",
                 motherboards: motherboards,
                 selected_motherboard: selected_motherboard,
-                selected_cpu: selected_cpu,
-                selected_gpu: selected_gpu,
-                selected_ram: selected_ram,
-                selected_storage: selected_storage,
-                selected_psu: selected_psu,
                 cpus: motherboard[0].cpuList,
                 gpus: motherboard[0].gpuList,
                 rams: motherboard[0].ramList,
@@ -272,3 +220,42 @@ module.exports.change = function (req, res) {
         });
     });
 };
+
+module.exports.getnew = async function (req, res) {
+    let selected_motherboard = req.body.motherboard.toString().toLowerCase(),
+        selected_cpu = req.body.cpu.toString().toLowerCase(),
+        selected_gpu = req.body.gpu.toString().toLowerCase(),
+        selected_ram = req.body.ram.toString().toLowerCase(),
+        selected_storage = req.body.storage.toString().toLowerCase(),
+        selected_psu = req.body.psu.toString().toLowerCase();
+
+        const a = await Prices.find({ name: selected_motherboard });
+        const b = await Prices.find({ name: selected_cpu });
+        const c = await Prices.find({ name: selected_gpu });
+        const d = await Prices.find({ name: selected_ram });
+        const e = await Prices.find({ name: selected_storage });
+
+        let f = await Prices.find({ name: selected_psu });
+        if (!f)
+            f = await Prices.find({ name: selected_psu + '+' });
+
+        const buildObj = {
+            name: "new build",
+            avatar: "build_9.png",
+            price: a[0].price[2] + b[0].price[2] + c[0].price[2] + d[0].price[2] + e[0].price[2] + f[0].price[2],
+            motherboard: [a[0].name, null, null, a[0].price[3]],
+            cpu: [b[0].name, null, null, b[0].price[3]],
+            gpu: [c[0].name, null, null, c[0].price[3]],
+            ram: [d[0].name, null, null, d[0].price[3]],
+            storage: [e[0].name, null, null, e[0].price[3]],
+            psu: [f[0].name, null, null, f[0].price[3]],
+        }
+
+        return res.render('build.ejs', {
+            title: "Create build",
+            email: req.session.email ? req.session.email : undefined,
+            build: buildObj,
+            wishlisted: false,
+            layout: false
+        });
+}

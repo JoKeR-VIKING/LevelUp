@@ -1,77 +1,55 @@
     <link rel="stylesheet" href="/static/css/create.css">
 
     <div class="dropdown-container">
-        <select class="motherboard" id="motherboard" name="motherboard">
-            <% if (!selected_motherboard) { %>
-                <option value="" selected disabled hidden>Choose Motherboard</option>
-            <% } else { %>
-                <option value="<%= selected_motherboard %>" selected disabled hidden><%= selected_motherboard %></option>
-            <% } %>
-            <% for (let motherboard of motherboards) { %>
-                <option class="option-input" data-tokens="<%= motherboard.motherboard %>" value="<%= motherboard.motherboard %>"><%= motherboard.motherboard %></option>
-            <% } %>
-        </select>
+        <form class="create-form" action="/builds/getnew" method="post">
+            <select class="motherboard" id="motherboard" name="motherboard" required>
+                <% if (!selected_motherboard) { %>
+                    <option value="" selected disabled hidden>Choose Motherboard</option>
+                <% } else { %>
+                    <option value="<%= selected_motherboard %>" selected><%= selected_motherboard %></option>
+                <% } %>
+                <% for (let motherboard of motherboards) { %>
+                    <option class="option-input" data-tokens="<%= motherboard.motherboard %>" value="<%= motherboard.motherboard %>"><%= motherboard.motherboard %></option>
+                <% } %>
+            </select>
 
-        <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <% if (!selected_cpu) { %>
+            <select class="cpu" name="cpu" <%= selected_motherboard ? undefined : "disabled" %> required>
                 <option value="" selected disabled hidden>Choose CPU</option>
-            <% } else { %>
-                <option value="<%= selected_cpu %>" selected disabled hidden><%= selected_cpu %></option>
-            <% } %>
-            <% for (let cpu of cpus) { %>
-                <option value="<%= cpu %>"><%= cpu %></option>
-            <% } %>
-        </select>
+                <% for (let cpu of cpus) { %>
+                    <option value="<%= cpu %>"><%= cpu %></option>
+                <% } %>
+            </select>
 
-        <select class="gpu" name="gpu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <% if (!selected_gpu) { %>
+            <select class="gpu" name="gpu" <%= selected_motherboard ? undefined : "disabled" %> required>
                 <option value="" selected disabled hidden>Choose GPU</option>
-            <% } else { %>
-                <option value="<%= selected_gpu %>" selected disabled hidden><%= selected_gpu %></option>
-            <% } %>
-            <% for (let gpu of gpus) { %>
-                <option value="<%= gpu %>"><%= gpu %></option>
-            <% } %>
-        </select>
+                <% for (let gpu of gpus) { %>
+                    <option value="<%= gpu %>"><%= gpu %></option>
+                <% } %>
+            </select>
 
-        <select class="ram" name="ram" <%= selected_motherboard ? undefined : "disabled" %>>
-            <% if (!selected_ram) { %>
+            <select class="ram" name="ram" <%= selected_motherboard ? undefined : "disabled" %> required>
                 <option value="" selected disabled hidden>Choose RAM</option>
-            <% } else { %>
-                <option value="<%= selected_ram %>" selected disabled hidden><%= selected_ram %></option>
-            <% } %>
-            <% for (let ram of rams) { %>
-                <option value="<%= ram %>"><%= rams %></option>
-            <% } %>
-        </select>
+                <% for (let ram of rams) { %>
+                    <option value="<%= ram %>"><%= ram %></option>
+                <% } %>
+            </select>
 
-        <select class="storage" name="storage" <%= selected_motherboard ? undefined : "disabled" %>>
-             <% if (!selected_storage) { %>
+            <select class="storage" name="storage" <%= selected_motherboard ? undefined : "disabled" %> required>
                 <option value="" selected disabled hidden>Choose Storage</option>
-            <% } else { %>
-                <option value="<%= selected_storage %>" selected disabled hidden><%= selected_storage %></option>
-            <% } %>
-            <% for (let storage of storages) { %>
-                <option value="<%= storage %>"><%= storage %></option>
-            <% } %>
-        </select>
+                <% for (let storage of storages) { %>
+                    <option value="<%= storage %>"><%= storage %></option>
+                <% } %>
+            </select>
 
-        <select class="psu" name="psu" <%= selected_motherboard ? undefined : "disabled" %>>
-            <% if (!selected_psu) { %>
+            <select class="psu" name="psu" <%= selected_motherboard ? undefined : "disabled" %> required>
                 <option value="" selected disabled hidden>Choose PSU</option>
-            <% } else { %>
-                <option value="<%= selected_psu %>" selected disabled hidden><%= selected_psu %></option>
-            <% } %>
-            <% for (let psu of psus) { %>
-                <option value="<%= psu %>"><%= psu %></option>
-            <% } %>
-        </select>
+                <% for (let psu of psus) { %>
+                    <option value="<%= psu %>"><%= psu %></option>
+                <% } %>
+            </select>
 
-        <div class="final-price">
-            <h3 class="price">
-                Total Price = ₹ <%= total_price.toLocaleString() %>
-            </h3>
-        </div>
+            <input class="create-btn" type="submit" value="Get Build Config">
+        </form>
     </div>
 
     <script src="/static/js/create.js"></script>

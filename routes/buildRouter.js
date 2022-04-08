@@ -9,6 +9,8 @@ router.get('/filter', buildController.filter);
 router.get('/create', buildController.create);
 router.get('/change', buildController.change);
 
+router.post('/getnew', buildController.getnew);
+
 router.use('/wishlist', passport.checkAuthentication, require('./wishlistRouter'));
 
 module.exports = router;
