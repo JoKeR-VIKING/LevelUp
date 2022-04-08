@@ -38,7 +38,7 @@
                     <img class="avatar" src="/static/img/<%= builds[i].avatar %>" alt="Image Not Found!">
                     <h5 class="product-title"><%= builds[i].name; %></h5>
                     <h5 class="product-price">₹<%= builds[i].price.toLocaleString(); %></h5>
-                    <button class="viewmore-btn" onclick="location.href = '/builds?number=<%= builds[i].name %>'">View More</button>
+                    <button class="viewmore-btn" onclick="window.open('/builds?number=<%= builds[i].name %>', '_blank')">View More</button>
                 </div>
             <%  printed = true;
                 }
