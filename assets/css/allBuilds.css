@@ -141,17 +141,17 @@ body
 
 .animatedLeft
 {
-    animation: 1s fadeInLeft ease-in-out;
+    animation: 1.5s fadeInLeft ease-in-out;
 }
 
 .animated
 {
-    animation: 1s fadeInPlace ease-in-out;
+    animation: 1.5s fadeInPlace ease-in-out;
 }
 
 .animatedRight
 {
-    animation: 1s fadeInRight ease-in-out;
+    animation: 1.5s fadeInRight ease-in-out;
 }
 
 .page-no
