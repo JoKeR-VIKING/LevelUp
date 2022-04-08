@@ -36,6 +36,7 @@ module.exports.displayBuild = function (req, res) {
                 email: req.session.email ? req.session.email : undefined,
                 build: build[0],
                 wishlisted: result,
+                newbuild: false,
                 layout: false
             });
         });
@@ -256,6 +257,7 @@ module.exports.getnew = async function (req, res) {
             email: req.session.email ? req.session.email : undefined,
             build: buildObj,
             wishlisted: false,
+            newbuild: true,
             layout: false
         });
 }
