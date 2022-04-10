@@ -41,7 +41,6 @@ for motherboard in motherboard_col.find():
 
             totalPrice += motherboard_price[2] + cpu_price[2] + gpu_price[2] + ram_price[2] + storage_price[2] + psu_price[2]
 
-
             build_col.insert_one({
                 "name": "build " + newBuildNumber,
                 "motherboard": motherboard_price,
