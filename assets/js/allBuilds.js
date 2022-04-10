@@ -129,5 +129,5 @@ function animatePages()
 window.onload = function ()
 {
     changePage(0);
-    setInterval(automaticChangePage, 15000);
+    setInterval(automaticChangePage, 10000);
 }
