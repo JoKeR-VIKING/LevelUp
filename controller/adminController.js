@@ -5,8 +5,6 @@ module.exports.addBuild = function (req, res) {
     if (req.session.email !== "admin@admin.com")
         return res.redirect('back');
 
-    console.log(req.body);
-
     Builds.create({
         name: req.body.name,
         motherboard: [req.body.motherboard],
