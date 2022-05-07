@@ -11,6 +11,7 @@ module.exports.login = function (req, res) {
 
     return res.render('login', {
         title: "Level Up | Login",
+        layout: "loginLayout",
         email: undefined,
     });
 };
@@ -23,6 +24,7 @@ module.exports.signup = function (req, res) {
 
     return res.render('signup', {
         title: "Level Up | Sign Up",
+        layout: "loginLayout",
         email: undefined,
     });
 };
