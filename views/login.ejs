@@ -1,15 +1,42 @@
     <link rel="stylesheet" href="/static/css/login.css">
 
-    <form class="box" action="/users/oldUser" method="post">
-        <h1>Login</h1>
-        <label for="email"></label>
-        <label for="password"></label>
-        <input type="text" placeholder="Username" name="email" id="email">
-        <input type="password" placeholder="Password" name="password" id="password">
-        <input type="submit" value="Login">
-        <a class="forgot-link" href="/users/forgot">
+
+
+
+        <div class="header">
+
+            Welcome to Level Up
+
+
+        </div>
+        <div class="header">
+            <strong>
+                LOGIN
+            </strong>
+        </div>
+        <form class="login-form" action="">
+            <div class="email-div">
+                <!--                    <label form="Email">Email</label>-->
+                <i class="fa fa-user"></i>
+                <input class="email" placeholder="Username" name="email" type="text">
+            </div>
+            <div class="password-div">
+                <!--                     <label form="Password">Password</label>-->
+                <i class="fa fa-lock"></i>
+                <input class="password" type="password" placeholder="Password" name="password">
+            </div>
+            <div class="login-div">
+                <input type="button" value="Login">
+                <br>
+                <a class="forgot-link" href="/users/forgot">
             Forgot Password ?
-        </a>
+                </a>
+
+            </div>
+        </form>
+
+
+
 
         <% if (messages.alreadyExists) { %>
             <p class="error-message">*<%= messages.alreadyExists %></p>
@@ -20,6 +47,6 @@
         <% } else if (messages.incorrectPass) { %>
             <p class="error-message">*<%= messages.incorrectPass %></p>
         <% } %>
-    </form>
+
 
     <script src=""></script>
