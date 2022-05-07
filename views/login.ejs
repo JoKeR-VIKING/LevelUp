@@ -1,8 +1,4 @@
     <link rel="stylesheet" href="/static/css/login.css">
-
-
-
-
         <div class="header">
 
             Welcome to Level Up
@@ -14,7 +10,8 @@
                 LOGIN
             </strong>
         </div>
-        <form class="login-form" action="">
+
+        <form class="login-form" action="/users/oldUser" method="post">
             <div class="email-div">
                 <!--                    <label form="Email">Email</label>-->
                 <i class="fa fa-user"></i>
@@ -26,7 +23,7 @@
                 <input class="password" type="password" placeholder="Password" name="password">
             </div>
             <div class="login-div">
-                <input type="button" value="Login">
+                <input type="submit" value="Login">
                 <br>
                 <a class="forgot-link" href="/users/forgot">
             Forgot Password ?
@@ -34,9 +31,6 @@
 
             </div>
         </form>
-
-
-
 
         <% if (messages.alreadyExists) { %>
             <p class="error-message">*<%= messages.alreadyExists %></p>
@@ -47,6 +41,5 @@
         <% } else if (messages.incorrectPass) { %>
             <p class="error-message">*<%= messages.incorrectPass %></p>
         <% } %>
-
 
     <script src=""></script>

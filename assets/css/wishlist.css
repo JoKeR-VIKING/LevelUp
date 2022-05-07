@@ -48,3 +48,10 @@ body
     background-color: #1D2228 !important;
     border-radius: 20px !important;
 }
+
+.page-title
+{
+    color: #EB4B4B;
+    margin-left: 45%;
+    margin-top: 2%;
+}
