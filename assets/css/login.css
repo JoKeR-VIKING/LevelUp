@@ -1,6 +1,6 @@
 *
 {
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
     user-select: none;
@@ -21,7 +21,6 @@ body
     font-size: 1rem;
     background-color:#cf556c;
     border-radius: 5px;
-
 }
 
 .nav-link, .nav-link:active, .nav-link:focus, .nav-link:hover, .navbar-brand, .navbar-brand:hover, .navbar-brand:active, .navbar-brand:focus

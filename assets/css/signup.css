@@ -1,6 +1,6 @@
 *
 {
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 0;
     padding: 0;
     user-select: none;
@@ -12,7 +12,6 @@ body
     width: 100vw;
     height: 100vh;
     position: relative;
-
     background-color:#CCEAEB;
 
 }
@@ -197,18 +196,16 @@ body
 }
 .header
 {
-	/*background: linear-gradient(to right, #30CFD0 0%, #330867 100%);*/
-
-
-   background-image: linear-gradient(45deg, #FF8880, #fE7062);
+    /*background: linear-gradient(to right, #30CFD0 0%, #330867 100%);*/
+    background-image: linear-gradient(45deg, #FF8880, #fE7062);
     font-weight:bold;
     text-transform:uppercase;
     font-size:1.2rem;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     line-height: 1.5rem;
-
 }
+
 .login-div {
 
     color:white;
